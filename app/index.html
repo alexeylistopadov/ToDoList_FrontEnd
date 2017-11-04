@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="todo">
+<html lang="en" >
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,17 +10,16 @@
   <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="app.css">
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
   <base href="/">
 </head>
-<body>
-<div class="container">
-  <to-do-list></to-do-list>
-</div>
-<script src="bower_components/angular/angular.js"></script>
-  <script src="bower_components/angular-route/angular-route.js"></script>
-  <script src="app.module.js"></script>
-  <script src="services/todo-point.service.js"></script>
-  <script src="todo-list/todo-list.component.js"></script>
+<body ng-app="todo">
+<div ng-view></div>
+<script src="app.module.js"></script>
+<script src="app.config.js"></script>
+<script src="services/todo-point.service.js"></script>
+<script src="todo-list/todo-list.component.js"></script>
 </body>
 </html>

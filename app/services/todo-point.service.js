@@ -1,4 +1,4 @@
-angular.module('todo', [])
+angular.module('todo')
     .factory('TodoService', ['$http', function ($http){
 
         return {

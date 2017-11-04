@@ -15,6 +15,5 @@ function ToDoListController(todoService){
 
     function initToDoList(points) {
         vm.points = points;
-        todoService.addTodoPoint(points[0]);
     }
 }

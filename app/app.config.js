@@ -1,4 +1,9 @@
 angular.module('todo')
-    .config(['$locationProvider', '$routeProvider', '$http', function ($locationProvider, $routeProvider, $http) {
+    .config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {
         $locationProvider.hashPrefix('!');
+
+        $routeProvider
+            .when("/", {
+                template: '<to-do-list></to-do-list>'
+            })
     }]);
