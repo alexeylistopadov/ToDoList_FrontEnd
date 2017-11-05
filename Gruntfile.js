@@ -12,6 +12,7 @@ module.exports = function (grunt) {
             'static': {
                 options: {
                     hostname: 'localhost',
+                    base: 'app',
                     port: 8001
                 }
             },
@@ -32,7 +33,7 @@ module.exports = function (grunt) {
                     {
                         context: '/',
                         host: 'localhost',
-                        port: 8000
+                        port: 8001
                     }
                 ]
             }
