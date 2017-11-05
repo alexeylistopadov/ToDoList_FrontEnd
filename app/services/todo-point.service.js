@@ -3,28 +3,28 @@
 
     angular
         .module('todo')
-        .factory('ToDoService', ToDoService);
+        .factory('TodoService', TodoService);
 
-    ToDoService.$inject = ['$http'];
+    TodoService.$inject = ['$http'];
 
-    function ToDoService($http) {
+    function TodoService($http) {
 
         return {
-            getTodoList: getToDoList,
-            addTodoPoint: addToDoPoint,
-            deleteTodoPoint: deleteToDoPoint
+            getTodoList: getTodoList,
+            addTodoPoint: addTodoPoint,
+            deleteTodoPoint: deleteTodoPoint
         };
 
-        function getToDoList() {
+        function getTodoList() {
             return $http.get('api/todo').then(res => res.data);
         }
 
-        function addToDoPoint(point) {
+        function addTodoPoint(point) {
             return $http.post('api/todo', point).then(res => res.data);
         }
 
-        function deleteToDoPoint(point) {
-            return $http.delete('api/todo?' + point);
+        function deleteTodoPoint(pointId) {
+            return $http.delete('api/todo?id=' + pointId).then(res => res.data);
         }
     }
 })();

@@ -9,6 +9,7 @@
     <li class="list-group-item" ng-repeat="point in $ctrl.points">
         {{point.content}}
         <span class="label label-info" ng-repeat="tag in point.tags">{{tag}}</span>
+        <i ng-click="$ctrl.deleteTodoPoint(point.id)" class="btn-sm btn-danger">delete</i>
     </li>
 </ul>
 
