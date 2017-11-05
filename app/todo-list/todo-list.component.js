@@ -1,19 +1,36 @@
-angular.module('todo').component('toDoList', {
-    templateUrl: 'todo-list/todo-list.template.html',
-    controller: ['TodoService', ToDoListController]
+(function () {
+    'use strict';
 
-});
+    angular.module('todo').component('toDoList', {
+        templateUrl: 'todo-list/todo-list.html',
+        controller: ToDoListController
 
-function ToDoListController(todoService){
-    let vm = this;
+    });
 
-    vm.$onInit = onInit;
+    ToDoListController.$inject = ['ToDoService'];
 
-    function onInit() {
-        todoService.getTodoList().then(initToDoList);
+    function ToDoListController(toDoService){
+        let vm = this;
+
+        vm.$onInit = onInit;
+
+        vm.point = {content: '' , tags: []};
+
+        function onInit() {
+            toDoService.getTodoList().then(initToDoList);
+        }
+
+        function initToDoList(points) {
+            vm.points = points;
+        }
+
+        vm.deleteToDoPoint = function(point) {
+            toDoService.deleteTodoPoint(point);
+        };
+
+        vm.addTodoPoint = function() {
+            toDoService.addTodoPoint(vm.point).then(vm.points.push.bind(vm.points));
+            vm.point = {content: '', tags:[]};
+        }
     }
-
-    function initToDoList(points) {
-        vm.points = points;
-    }
-}
+})()

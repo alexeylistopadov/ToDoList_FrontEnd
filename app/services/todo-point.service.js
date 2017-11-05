@@ -1,21 +1,30 @@
-angular.module('todo')
-    .factory('TodoService', ['$http', function ($http){
+(function () {
+    'use strict';
+
+    angular
+        .module('todo')
+        .factory('ToDoService', ToDoService);
+
+    ToDoService.$inject = ['$http'];
+
+    function ToDoService($http) {
 
         return {
-            getTodoList: getTodoList,
-            addTodoPoint: addTodoPoint,
-            deleteTodoPoint: deleteTodoPoint
+            getTodoList: getToDoList,
+            addTodoPoint: addToDoPoint,
+            deleteTodoPoint: deleteToDoPoint
         };
 
-        function getTodoList(){
-            return $http.get('api/todo').then( res =>{return res.data} );
+        function getToDoList() {
+            return $http.get('api/todo').then(res => res.data);
         }
 
-        function addTodoPoint(point){
-            return $http.post('api/todo',point);
+        function addToDoPoint(point) {
+            return $http.post('api/todo', point).then(res => res.data);
         }
 
-        function deleteTodoPoint(point) {
-            return $http.delete('api/todo', {id: point});
+        function deleteToDoPoint(point) {
+            return $http.delete('api/todo?' + point);
         }
-    }]);
+    }
+})();
