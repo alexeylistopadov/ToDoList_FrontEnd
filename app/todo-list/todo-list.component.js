@@ -12,17 +12,16 @@
     function TodoListController(toDoService){
         let vm = this;
 
-        vm.$onInit = onInit;
+        vm.$onInit = loadTodoList;
 
         vm.point = {content: '' , tags: []};
 
-        function onInit() {
+        function loadTodoList() {
             toDoService.getTodoList().then(initTodoList);
         }
 
         function initTodoList(points) {
             vm.points = points;
-            console.log(vm.points)
         }
 
         vm.addTodoPoint = function() {
@@ -31,7 +30,7 @@
         };
 
         vm.deleteTodoPoint = function(pointId) {
-            toDoService.deleteTodoPoint(pointId).then(initTodoList);
+            toDoService.deleteTodoPoint(pointId).then(loadTodoList);
         };
     }
 })();

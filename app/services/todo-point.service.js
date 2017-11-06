@@ -9,6 +9,8 @@
 
     function TodoService($http) {
 
+        const TODO_COLLECTION_URL = 'api/todos';
+
         return {
             getTodoList: getTodoList,
             addTodoPoint: addTodoPoint,
@@ -16,15 +18,15 @@
         };
 
         function getTodoList() {
-            return $http.get('api/todo').then(res => res.data);
+            return $http.get(TODO_COLLECTION_URL).then(res => res.data);
         }
 
         function addTodoPoint(point) {
-            return $http.post('api/todo', point).then(res => res.data);
+            return $http.post(TODO_COLLECTION_URL, point).then(res => res.data);
         }
 
         function deleteTodoPoint(pointId) {
-            return $http.delete('api/todo?id=' + pointId).then(res => res.data);
+            return $http.delete(TODO_COLLECTION_URL + '/' + pointId);
         }
     }
 })();
