@@ -8,7 +8,7 @@
     function todoConfig($routeProvider) {
         $routeProvider
             .when("/", {
-                template: '<to-do-list></to-do-list>'
+                template: '<todo-list></todo-list>'
             });
     }
 })();

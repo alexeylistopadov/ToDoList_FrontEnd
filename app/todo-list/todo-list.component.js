@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('todo').component('toDoList', {
+    angular.module('todo').component('todoList', {
         templateUrl: 'todo-list/todo-list.html',
         controller: TodoListController
 
@@ -9,7 +9,7 @@
 
     TodoListController.$inject = ['TodoService'];
 
-    function TodoListController(toDoService){
+    function TodoListController(todoService){
         let vm = this;
 
         vm.$onInit = loadTodoList;
@@ -17,7 +17,7 @@
         vm.point = {content: '' , tags: []};
 
         function loadTodoList() {
-            toDoService.getTodoList().then(initTodoList);
+            todoService.getTodoList().then(initTodoList);
         }
 
         function initTodoList(points) {
@@ -25,12 +25,12 @@
         }
 
         vm.addTodoPoint = function() {
-            toDoService.addTodoPoint(vm.point).then(vm.points.push.bind(vm.points));
+            todoService.addTodoPoint(vm.point).then(loadTodoList);
             vm.point = {content: '', tags:[]};
         };
 
         vm.deleteTodoPoint = function(pointId) {
-            toDoService.deleteTodoPoint(pointId).then(loadTodoList);
+            todoService.deleteTodoPoint(pointId).then(loadTodoList);
         };
     }
 })();

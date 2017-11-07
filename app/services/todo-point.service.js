@@ -12,21 +12,31 @@
         const TODO_COLLECTION_URL = 'api/todos';
 
         return {
-            getTodoList: getTodoList,
             addTodoPoint: addTodoPoint,
+            getTodoList: getTodoList,
+            getTodoPoint: getTodoPoint,
+            updateTodoPoint: updateTodoPoint,
             deleteTodoPoint: deleteTodoPoint
         };
+
+        function addTodoPoint(point) {
+            return $http.post(TODO_COLLECTION_URL, point);
+        }
 
         function getTodoList() {
             return $http.get(TODO_COLLECTION_URL).then(res => res.data);
         }
 
-        function addTodoPoint(point) {
-            return $http.post(TODO_COLLECTION_URL, point).then(res => res.data);
+        function getTodoPoint(id) {
+            return $http.get(TODO_COLLECTION_URL + '/' + id).then(res => res.data);
         }
 
-        function deleteTodoPoint(pointId) {
-            return $http.delete(TODO_COLLECTION_URL + '/' + pointId);
+        function updateTodoPoint(point) {
+            return $http.put(TODO_COLLECTION_URL, point);
+        }
+
+        function deleteTodoPoint(id) {
+            return $http.delete(TODO_COLLECTION_URL + '/' + id);
         }
     }
 })();
