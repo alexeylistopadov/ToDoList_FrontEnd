@@ -1,0 +1,21 @@
+todo-list .point-item-button {
+    float: right;
+    font-size: 16px;
+    margin: 0 0 0 4px;
+}
+
+todo-list .point-content {
+    width: 95%;
+    word-wrap: break-word;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+todo-list .save-button {
+    margin: 30px 0;
+}
+
+.point-tag {
+    margin: 2px;
+    font-size: 14px;
+}

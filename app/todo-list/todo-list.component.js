@@ -3,6 +3,7 @@
 
     angular.module('todo').component('todoList', {
         templateUrl: 'todo-list/todo-list.html',
+        css: 'todo-list/todo-list.css',
         controller: TodoListController
 
     });
@@ -15,6 +16,7 @@
         vm.$onInit = loadTodoList;
 
         vm.point = {content: '' , tags: []};
+        vm.selectedPoint = {};
 
         function loadTodoList() {
             todoService.getTodoList().then(initTodoList);
@@ -29,8 +31,16 @@
             vm.point = {content: '', tags:[]};
         };
 
+        vm.updateTodoPoint = function (point) {
+            todoService.updateTodoPoint(point)
+        };
+
         vm.deleteTodoPoint = function(pointId) {
             todoService.deleteTodoPoint(pointId).then(loadTodoList);
         };
+        
+        vm.selectPoint = function (point) {
+            vm.selectedPoint = point;
+        }
     }
 })();

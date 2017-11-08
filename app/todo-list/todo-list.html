@@ -1,14 +1,33 @@
-<h1 class="page-header">Todo List</h1>
+<div class="row">
+    <h1 class="page-header">Todo List</h1>
 
-<form class="form-inline">
-    <input placeholder="Point text" ng-model="$ctrl.point.content" class="form-control" type="text">
-    <button ng-click="$ctrl.addTodoPoint()" class="btn btn-default">Add</button>
-</form>
+    <div class="col-md-3">
+        <h3>Add point</h3>
+        <form class="form-group" ng-submit="$ctrl.addTodoPoint()">
+            <h4>Content</h4>
+            <input placeholder="Point content" ng-model="$ctrl.point.content" class="form-control" type="text" required>
+            <h4>Tags</h4>
+            <tag-picker tags="$ctrl.point.tags"></tag-picker>
+            <button type="submit" class="btn btn-default save-button">Add</button>
+        </form>
 
-<ul class="list-group">
-    <li class="list-group-item" ng-repeat="point in $ctrl.points">
-        {{point.content}}
-        <span class="label label-info" ng-repeat="tag in point.tags">{{tag}}</span>
-        <i ng-click="$ctrl.deleteTodoPoint(point.id)" class="btn-sm btn-danger">delete</i>
-    </li>
-</ul>
+        <h3>Edit point</h3>
+        <form class="form-group" ng-submit="$ctrl.updateTodoPoint($ctrl.selectedPoint)">
+            <h4>Content</h4>
+            <input placeholder="Point content" ng-model="$ctrl.selectedPoint.content" class="form-control" type="text" required>
+            <h4>Tags</h4>
+            <tag-picker tags="$ctrl.selectedPoint.tags"></tag-picker>
+            <button type="submit" class="btn btn-default save-button">Save</button>
+        </form>
+    </div>
+
+    <ul class="list-group col-md-9">
+        <h3>Points</h3>
+        <li class="list-group-item" ng-repeat="point in $ctrl.points | orderBy: 'point.id':true">
+            <span class="point-content">{{point.content}}</span>
+            <span class="label label-info point-tag" ng-repeat="tag in point.tags">{{tag}}</span>
+            <i class="point-item-button" ng-click="$ctrl.deleteTodoPoint(point.id)"><i class="fa fa-trash-o" aria-hidden="true"></i></i>
+            <i class="point-item-button" ng-click="$ctrl.selectPoint(point)"><i class="fa fa-cog" aria-hidden="true"></i></i>
+        </li>
+    </ul>
+</div>
