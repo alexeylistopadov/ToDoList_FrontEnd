@@ -1,9 +1,13 @@
 (function () {
     'use strict';
 
-    angular.module('todo', ['ngRoute']).config(todoConfig);
+    angular
+        .module('todo', ['ngRoute','ngMaterial'])
+        .config(todoConfig);
 
-    todoConfig.$inject = ['$routeProvider'];
+    todoConfig.$inject = [
+        '$routeProvider'
+    ];
 
     function todoConfig($routeProvider) {
         $routeProvider

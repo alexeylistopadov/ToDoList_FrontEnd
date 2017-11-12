@@ -1,33 +1,22 @@
-<div class="row">
-    <h1 class="page-header">Todo List</h1>
-
-    <div class="col-md-3">
-        <h3>Add point</h3>
-        <form class="form-group" ng-submit="$ctrl.addTodoPoint()">
-            <h4>Content</h4>
-            <input placeholder="Point content" ng-model="$ctrl.point.content" class="form-control" type="text" required>
-            <h4>Tags</h4>
-            <tag-picker tags="$ctrl.point.tags"></tag-picker>
-            <button type="submit" class="btn btn-default save-button">Add</button>
-        </form>
-
-        <h3>Edit point</h3>
-        <form class="form-group" ng-submit="$ctrl.updateTodoPoint($ctrl.selectedPoint)">
-            <h4>Content</h4>
-            <input placeholder="Point content" ng-model="$ctrl.selectedPoint.content" class="form-control" type="text" required>
-            <h4>Tags</h4>
-            <tag-picker tags="$ctrl.selectedPoint.tags"></tag-picker>
-            <button type="submit" class="btn btn-default save-button">Save</button>
-        </form>
+<div ng-cloak layout="column">
+    <md-toolbar layout="row" class="md-toolbar-tools">
+        <h1>Todo List</h1>
+    </md-toolbar>
+    <div>
+        <md-content layout="row" flex="100">
+            <md-button class="md-fab md-mini md-primary" aria-label="Add" ng-click="$ctrl.showAdd($event)">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+            </md-button>
+            <md-list flex layout="column">
+                <md-list-item ng-repeat="point in $ctrl.points" ng-click="$ctrl.showEdit($event,point)">
+                    <div class="md-list-item-text" layout="column" flex="100">
+                        <h3 layout="column">{{point.content}}</h3>
+                        <md-chips flex="column" readonly="true" ng-model="point.tags"></md-chips>
+                    </div>
+                    <md-button ng-click="$ctrl.showDelete($event, point.id)">Delete</md-button>
+                    <md-divider></md-divider>
+                </md-list-item>
+            </md-list>
+        </md-content>
     </div>
-
-    <ul class="list-group col-md-9">
-        <h3>Points</h3>
-        <li class="list-group-item" ng-repeat="point in $ctrl.points | orderBy: 'point.id':true">
-            <span class="point-content">{{point.content}}</span>
-            <span class="label label-info point-tag" ng-repeat="tag in point.tags">{{tag}}</span>
-            <i class="point-item-button" ng-click="$ctrl.deleteTodoPoint(point.id)"><i class="fa fa-trash-o" aria-hidden="true"></i></i>
-            <i class="point-item-button" ng-click="$ctrl.selectPoint(point)"><i class="fa fa-cog" aria-hidden="true"></i></i>
-        </li>
-    </ul>
 </div>

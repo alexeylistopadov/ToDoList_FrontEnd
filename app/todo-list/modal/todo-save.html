@@ -1,0 +1,20 @@
+<md-dialog flex="40">
+    <md-dialog-title>
+        <md-toolbar class="md-primary">
+            <div class="md-toolbar-tools">
+                <h2 class="md-flex">{{mode}}</h2>
+            </div>
+        </md-toolbar>
+    </md-dialog-title>
+    <md-dialog-content class="md-dialog-content">
+        <form ng-submit="save(point)">
+            <md-input-container class="md-block">
+                <input type="text" ng-model="point.content" placeholder="Todo text" ng-minlength="3"  required>
+            </md-input-container>
+            <md-chips ng-model="point.tags" name="tags" placeholder="Tags"></md-chips>
+        </form>
+    </md-dialog-content>
+    <md-dialog-actions>
+        <md-button ng-click="save(point)">Save</md-button>
+    </md-dialog-actions>
+</md-dialog>

@@ -10,18 +10,22 @@
   <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="bower_components/components-font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
   <link rel="stylesheet" href="app.css">
   <link rel="stylesheet" href="todo-list/todo-list.css">
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/angular-aria/angular-aria.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.js"></script>
+  <script src="bower_components/angular-material/angular-material.js"></script>
   <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
   <base href="/">
 </head>
 <body ng-app="todo">
-<div ng-view class="container"></div>
+<div ng-view></div>
 <script src="app.module.js"></script>
 <script src="services/todo-point.service.js"></script>
 <script src="todo-list/todo-list.component.js"></script>
-<script src="tag-picker/tag-picker.component.js"></script>
+<script src="services/modal.service.js"></script>
 </body>
 </html>
