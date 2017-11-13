@@ -16,6 +16,7 @@
             getTodoList: getTodoList,
             getTodoPoint: getTodoPoint,
             updateTodoPoint: updateTodoPoint,
+            patchTodoPoint: patchTodoPoint,
             deleteTodoPoint: deleteTodoPoint
         };
 
@@ -37,6 +38,10 @@
 
         function deleteTodoPoint(id) {
             return $http.delete(TODO_COLLECTION_URL + '/' + id);
+        }
+
+        function patchTodoPoint(id,field) {
+            return $http.patch(TODO_COLLECTION_URL + '/' + id, field);
         }
     }
 })();
